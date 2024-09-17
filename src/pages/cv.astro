@@ -170,7 +170,6 @@ import Content, { frontmatter } from "../cv/de.md";
     main {
       width: 100%;
       margin: 1rem;
-      padding-right: 80mm; /* Adjust padding to accommodate image */
       background-color: transparent; /* Remove main background */
       box-shadow: none; /* Remove box-shadow */
       border-radius: 0; /* Remove border-radius */
@@ -183,9 +182,7 @@ import Content, { frontmatter } from "../cv/de.md";
     }
   }
 
-  @media (max-width: 600px) and (orientation: portrait) {
-    /* Smartphone Portrait Mode */
-
+  @media (max-width: 600px) {
     body {
       background-color: transparent; /* Remove background color */
     }
@@ -193,11 +190,15 @@ import Content, { frontmatter } from "../cv/de.md";
     main {
       width: 100%;
       margin: 0;
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       background-color: transparent; /* Remove main background */
       box-shadow: none; /* Remove box-shadow */
       border-radius: 0; /* Remove border-radius */
     }
+  }
+
+  @media (max-width: 600px) and (orientation: portrait) {
+    /* Smartphone Portrait Mode */
 
     img.portrait {
       position: static; /* Remove absolute positioning */
@@ -220,24 +221,10 @@ import Content, { frontmatter } from "../cv/de.md";
   @media (max-width: 600px) and (orientation: landscape) {
     /* Smartphone Landscape Mode */
 
-    body {
-      background-color: transparent; /* Remove background color */
-    }
-
-    main {
-      width: 100%;
-      margin: 0;
-      padding: 1rem;
-      padding-right: 60mm; /* Adjust padding for landscape */
-      background-color: transparent; /* Remove main background */
-      box-shadow: none; /* Remove box-shadow */
-      border-radius: 0; /* Remove border-radius */
-    }
-
     img.portrait {
       width: 50mm;
       top: 10mm;
-      right: 10mm;
+      right: 1rem;
     }
   }
 </style>
