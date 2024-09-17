@@ -153,78 +153,80 @@ import Content, { frontmatter } from "../cv/de.md";
     }
 
     section .heading[data-heading-rank="3"] {
-      break-inside: avoid; /* Prevent page breaks inside supersections */
+      break-inside: avoid; /* Prevent page breaks inside subsections */
     }
     section .heading[data-heading-rank="4"] {
-      break-inside: avoid; /* Prevent page breaks inside supersections */
+      break-inside: avoid; /* Prevent page breaks inside subsections */
     }
   }
 
   /* Responsive Adjustments */
-  @media (max-width: 1024px) and (min-width: 601px) {
-    /* Tablet Devices */
-    body {
-      background-color: transparent; /* Remove background color */
+  @media screen {
+    @media (max-width: 1024px) and (min-width: 601px) {
+      /* Tablet Devices */
+      body {
+        background-color: transparent; /* Remove background color */
+      }
+
+      main {
+        width: 100%;
+        margin: 1rem;
+        background-color: transparent; /* Remove main background */
+        box-shadow: none; /* Remove box-shadow */
+        border-radius: 0; /* Remove border-radius */
+      }
+
+      img.portrait {
+        width: 60mm;
+        top: 10mm;
+        right: 10mm;
+      }
     }
 
-    main {
-      width: 100%;
-      margin: 1rem;
-      background-color: transparent; /* Remove main background */
-      box-shadow: none; /* Remove box-shadow */
-      border-radius: 0; /* Remove border-radius */
+    @media (max-width: 600px) {
+      body {
+        background-color: transparent; /* Remove background color */
+      }
+
+      main {
+        width: 100%;
+        margin: 0;
+        padding: 1rem 1.5rem;
+        background-color: transparent; /* Remove main background */
+        box-shadow: none; /* Remove box-shadow */
+        border-radius: 0; /* Remove border-radius */
+      }
     }
 
-    img.portrait {
-      width: 60mm;
-      top: 10mm;
-      right: 10mm;
-    }
-  }
+    @media (max-width: 600px) and (orientation: portrait) {
+      /* Smartphone Portrait Mode */
 
-  @media (max-width: 600px) {
-    body {
-      background-color: transparent; /* Remove background color */
-    }
+      img.portrait {
+        position: static; /* Remove absolute positioning */
+        width: 60mm; /* Adjust size */
+        margin: 1rem auto; /* Center the image */
+      }
 
-    main {
-      width: 100%;
-      margin: 0;
-      padding: 1rem 1.5rem;
-      background-color: transparent; /* Remove main background */
-      box-shadow: none; /* Remove box-shadow */
-      border-radius: 0; /* Remove border-radius */
-    }
-  }
+      /* Adjust text layout to single column */
+      section .heading[data-heading-rank="3"] {
+        grid-template-columns: 1fr;
+      }
 
-  @media (max-width: 600px) and (orientation: portrait) {
-    /* Smartphone Portrait Mode */
-
-    img.portrait {
-      position: static; /* Remove absolute positioning */
-      width: 60mm; /* Adjust size */
-      margin: 1rem auto; /* Center the image */
+      section .heading[data-heading-rank="3"] h3,
+      section .heading[data-heading-rank="3"] p,
+      section .heading[data-heading-rank="3"] a {
+        grid-column: 1; /* Full width */
+      }
     }
 
-    /* Adjust text layout to single column */
-    section .heading[data-heading-rank="3"] {
-      grid-template-columns: 1fr;
-    }
+    @media (max-width: 600px) and (orientation: landscape) {
+      /* Smartphone Landscape Mode */
 
-    section .heading[data-heading-rank="3"] h3,
-    section .heading[data-heading-rank="3"] p,
-    section .heading[data-heading-rank="3"] a {
-      grid-column: 1; /* Full width */
-    }
-  }
-
-  @media (max-width: 600px) and (orientation: landscape) {
-    /* Smartphone Landscape Mode */
-
-    img.portrait {
-      width: 50mm;
-      top: 10mm;
-      right: 1rem;
+      img.portrait {
+        width: 50mm;
+        top: 10mm;
+        right: 1rem;
+      }
     }
   }
 </style>
