@@ -9,6 +9,9 @@ export default defineConfig({
   site: "https://www.peppert.de",
   integrations: [tailwind()],
   markdown: {
-    rehypePlugins: [sectionize],
+    rehypePlugins: [
+      // @ts-ignore
+      sectionize,
+    ],
   },
 });
