@@ -159,4 +159,70 @@ import Content, { frontmatter } from "../cv/de.md";
       break-inside: avoid; /* Prevent page breaks inside supersections */
     }
   }
+
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) and (min-width: 601px) {
+    /* Tablet Devices */
+
+    main {
+      width: 100%;
+      margin: 1rem;
+      padding-right: 80mm; /* Adjust padding to accommodate image */
+    }
+
+    img.portrait {
+      width: 60mm;
+      top: 10mm;
+      right: 10mm;
+    }
+  }
+
+  @media (max-width: 600px) and (orientation: portrait) {
+    /* Smartphone Portrait Mode */
+
+    body {
+      background-color: transparent; /* Remove background color */
+    }
+
+    main {
+      width: 100%;
+      margin: 0;
+      padding: 1rem;
+      padding-right: 0; /* Remove right padding */
+      background-color: transparent; /* Remove main background */
+      box-shadow: none; /* Remove box-shadow */
+      border-radius: 0; /* Remove border-radius */
+    }
+
+    img.portrait {
+      position: static; /* Remove absolute positioning */
+      width: 60mm; /* Adjust size */
+      margin: 1rem auto; /* Center the image */
+    }
+
+    /* Adjust text layout to single column */
+    section .heading[data-heading-rank="3"] {
+      grid-template-columns: 1fr;
+    }
+
+    section .heading[data-heading-rank="3"] h3,
+    section .heading[data-heading-rank="3"] p,
+    section .heading[data-heading-rank="3"] a {
+      grid-column: 1; /* Full width */
+    }
+  }
+
+  @media (max-width: 600px) and (orientation: landscape) {
+    /* Smartphone Landscape Mode */
+
+    main {
+      padding-right: 60mm; /* Adjust padding for landscape */
+    }
+
+    img.portrait {
+      width: 50mm;
+      top: 10mm;
+      right: 10mm;
+    }
+  }
 </style>
