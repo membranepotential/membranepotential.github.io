@@ -163,11 +163,17 @@ import Content, { frontmatter } from "../cv/de.md";
   /* Responsive Adjustments */
   @media (max-width: 1024px) and (min-width: 601px) {
     /* Tablet Devices */
+    body {
+      background-color: transparent; /* Remove background color */
+    }
 
     main {
       width: 100%;
       margin: 1rem;
       padding-right: 80mm; /* Adjust padding to accommodate image */
+      background-color: transparent; /* Remove main background */
+      box-shadow: none; /* Remove box-shadow */
+      border-radius: 0; /* Remove border-radius */
     }
 
     img.portrait {
@@ -188,7 +194,6 @@ import Content, { frontmatter } from "../cv/de.md";
       width: 100%;
       margin: 0;
       padding: 1rem;
-      padding-right: 0; /* Remove right padding */
       background-color: transparent; /* Remove main background */
       box-shadow: none; /* Remove box-shadow */
       border-radius: 0; /* Remove border-radius */
@@ -215,8 +220,18 @@ import Content, { frontmatter } from "../cv/de.md";
   @media (max-width: 600px) and (orientation: landscape) {
     /* Smartphone Landscape Mode */
 
+    body {
+      background-color: transparent; /* Remove background color */
+    }
+
     main {
+      width: 100%;
+      margin: 0;
+      padding: 1rem;
       padding-right: 60mm; /* Adjust padding for landscape */
+      background-color: transparent; /* Remove main background */
+      box-shadow: none; /* Remove box-shadow */
+      border-radius: 0; /* Remove border-radius */
     }
 
     img.portrait {
