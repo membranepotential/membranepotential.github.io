@@ -1,0 +1,162 @@
+---
+import Content, { frontmatter } from "../cv/de.md";
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Felix Peppert - CV</title>
+  </head>
+  <body>
+    <main>
+      <img
+        src="/portrait.jpg"
+        class="portrait"
+        alt="Portrait of Felix Peppert"
+      />
+      <Content />
+      <section class="signature">
+        <p>{frontmatter.place}, {frontmatter.date}</p>
+        <p>Felix Peppert</p>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    background-color: #f3f4f6;
+  }
+
+  main {
+    position: relative;
+    width: 210mm;
+    margin: 1rem;
+    padding: 15mm 15mm 25mm 15mm;
+    background-color: white;
+    border-radius: 0.5rem;
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+      0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+
+  img.portrait {
+    display: block;
+    position: absolute;
+    right: 15mm;
+    margin: 0 auto;
+    width: 60mm;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-top: 25mm;
+    margin-bottom: 2rem;
+  }
+
+  /* Horizontal line after h1 */
+  h1::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #000;
+    margin-top: 0.5rem;
+  }
+
+  a {
+    color: #1a0dab;
+    text-decoration: underline;
+  }
+
+  /* Supersection */
+  section .heading[data-heading-rank="2"] {
+    margin-bottom: 2rem;
+  }
+
+  /* Supersection header */
+  section .heading[data-heading-rank="2"] h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Two-column layout for subsections with h3 */
+  section .heading[data-heading-rank="3"] {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+    gap: 0 1rem;
+    margin-bottom: 1rem;
+  }
+
+  section .heading[data-heading-rank="3"] h3 {
+    grid-column: 1; /* Force the h3 into the left column */
+    margin: 0;
+    font-weight: bold;
+  }
+
+  section .heading[data-heading-rank="3"] p,
+  section .heading[data-heading-rank="3"] a {
+    grid-column: 2; /* Force all other content (p, a, etc.) into the right column */
+  }
+
+  /* Single-column layout for subsections with h4 */
+  section .heading[data-heading-rank="4"] {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  section .heading[data-heading-rank="4"] h4 {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  /*Signature*/
+  section.signature {
+    margin-top: 3rem;
+  }
+
+  section.signature p {
+    margin: 0.2rem 0;
+  }
+
+  /* CSS for printing/PDF */
+  @media print {
+    @page {
+      size: A4 portrait;
+
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+
+    main {
+      width: 100vw;
+      margin: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    section .heading[data-heading-rank="3"] {
+      break-inside: avoid; /* Prevent page breaks inside supersections */
+    }
+    section .heading[data-heading-rank="4"] {
+      break-inside: avoid; /* Prevent page breaks inside supersections */
+    }
+  }
+</style>
