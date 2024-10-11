@@ -58,7 +58,7 @@ const recentEntries = combinedEntries.slice(0, 5)
   <div class="space-y-4">
     {
       recentEntries.map((entry, index) => (
-        <div key={`${entry.type}-${index}`} class="flex flex-col">
+        <div data-key={`${entry.type}-${index}`} class="flex flex-col">
           <span class="text-sm text-gray-500 dark:text-gray-400">
             {entry.date.toLocaleDateString(undefined, {
               year: 'numeric',
