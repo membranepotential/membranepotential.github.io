@@ -8,8 +8,72 @@
  *  - Incremental loading/pagination/infinite scroll
  */
 import Layout from '../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+export interface BlogPost {
+  title: string
+  date: Date
+  summary: string
+  content: string
+  slug: string
+  href: string
+}
+
+function splitBody(body: string) {
+  const [summary, content] = body.split('\n', 2)
+  return { summary, content }
+}
+
+const posts = (await getCollection('blog'))
+  .map((post: any) => {
+    const { summary, content } = splitBody(post.body)
+    return {
+      title: post.data.title,
+      date: post.data.date,
+      summary,
+      content,
+      slug: post.slug,
+      href: `/blog/${post.slug}`,
+    }
+  })
+  .sort((a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime())
 ---
 
 <Layout>
   <h1>Blog</h1>
+  <div class="blog-list">
+    {
+      posts.map((post) => (
+        <article class="blog-post">
+          <h2>
+            <a href={post.href}>{post.title}</a>
+          </h2>
+          <p class="post-date">{post.date.toDateString()}</p>
+          {post.summary && <p class="post-summary">{post.summary}</p>}
+        </article>
+      ))
+    }
+  </div>
 </Layout>
+
+<style>
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .blog-post {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+  }
+
+  .post-date {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .post-summary {
+    margin-top: 0.5rem;
+  }
+</style>
