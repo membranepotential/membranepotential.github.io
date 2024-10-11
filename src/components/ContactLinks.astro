@@ -1,0 +1,30 @@
+---
+const links = [
+  {
+    label: 'Email',
+    href: 'mailto:felix@peppert.de',
+    icon: '/icons/mail.svg',
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/membranepotential',
+    icon: 'icons/github-white.svg',
+  },
+  {
+    label: 'Lichess',
+    href: 'https://lichess.org/@/membranepotential',
+    icon: 'icons/lichess-white.svg',
+  },
+]
+---
+
+<div class="my-8 flex justify-center">
+  {
+    links.map((item) => (
+      <a href={item.href} class="mx-4 w-12 font-bold text-white">
+        <img src={item.icon} alt={item.label} />
+        <span class="my-4 text-center">{item.label}</span>
+      </a>
+    ))
+  }
+</div>

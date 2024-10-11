@@ -1,5 +1,9 @@
+---
+import Nav from '../components/Nav.astro'
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -12,21 +16,13 @@
     <title>Felix Peppert</title>
   </head>
   <body>
-    <slot />
+    <Nav />
+    <main class="m-auto p-4">
+      <slot />
+    </main>
   </body>
 </html>
 <style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
   html {
     font-family: system-ui, sans-serif;
     background: #13151a;

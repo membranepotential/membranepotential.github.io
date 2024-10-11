@@ -1,0 +1,37 @@
+---
+const cards = [
+  {
+    title: 'Automation',
+    text: 'Discover opportunities to automate processes, guided by workflows and AI.',
+  },
+  {
+    title: 'Web App Development',
+    text: 'Build web applications with modern technologies.',
+  },
+  {
+    title: 'Computer Vision',
+    text: 'Develop image processing algorithms for your specific use case.',
+  },
+  {
+    title: 'Machine Learning',
+    text: 'Train models to predict outcomes or classify data.',
+  },
+  {
+    title: 'Online Marketing',
+    text: 'Automate keywords and campaigns',
+  },
+]
+---
+
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  {
+    cards.map((card) => (
+      <div class="block max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {card.title}
+        </h5>
+        <p class="font-normal text-gray-700 dark:text-gray-400">{card.text}</p>
+      </div>
+    ))
+  }
+</div>

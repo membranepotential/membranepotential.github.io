@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content'
+
+// Define TypeScript interfaces for clarity (optional)
+interface BlogEntry {
+  type: 'blog'
+  date: Date
+  title: string
+  slug: string
+}
+
+interface MicroblogEntry {
+  type: 'microblog'
+  title: string
+  date: Date
+  url: string
+}
+
+// Fetch collections
+const blogEntries = await getCollection('blog')
+const microblogEntries = await getCollection('microblog')
+
+// Map and add a type to each entry
+const mappedBlogEntries: BlogEntry[] = blogEntries.map((entry) => ({
+  type: 'blog',
+  date: entry.data.date,
+  title: entry.data.title,
+  slug: entry.slug,
+}))
+
+const mappedMicroblogEntries: MicroblogEntry[] = microblogEntries.map(
+  (entry) => ({
+    type: 'microblog',
+    title: entry.data.title,
+    date: entry.data.date,
+    url: entry.data.url,
+  }),
+)
+
+// Combine and sort entries by date (descending)
+const combinedEntries = [...mappedBlogEntries, ...mappedMicroblogEntries].sort(
+  (a, b) => b.date.getTime() - a.date.getTime(),
+)
+
+// Limit to the 5 most recent entries
+const recentEntries = combinedEntries.slice(0, 5)
+---
+
+<!-- Newsticker Component -->
+<div
+  class="block max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800"
+>
+  <h2
+    class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+  >
+    Latest News
+  </h2>
+  <div class="space-y-4">
+    {
+      recentEntries.map((entry, index) => (
+        <div key={`${entry.type}-${index}`} class="flex flex-col">
+          <span class="text-sm text-gray-500 dark:text-gray-400">
+            {entry.date.toLocaleDateString(undefined, {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </span>
+          {entry.type === 'blog' ? (
+            <a
+              href={`/blog/${entry.slug}`}
+              class="text-blue-600 hover:underline dark:text-blue-400"
+            >
+              {entry.title}
+            </a>
+          ) : (
+            <a
+              href={entry.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-600 hover:underline dark:text-blue-400"
+            >
+              {entry.title}
+            </a>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</div>

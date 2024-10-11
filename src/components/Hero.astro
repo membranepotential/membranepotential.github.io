@@ -1,0 +1,49 @@
+<canvas id="canvas" class="h-full w-full"></canvas>
+
+<script>
+  import { perlin } from '../landscapes/perlin'
+  import { drawMountains, setBackground } from '../landscapes/canvas'
+
+  const canvas = document.getElementById('canvas') as HTMLCanvasElement
+
+  const w = canvas.width
+  const h = canvas.height
+
+  const ctx = canvas.getContext('2d')!
+  ctx.strokeStyle = `rgba(0, 0, 0, 0)`
+
+  const mtnIterations = 5
+  const mtnAmplitude = Math.random() * 100
+  const mtnWavelength = 10
+  const mtnDivisor = 100
+  const mtnHeightMax = h / 4
+  const mtnHeightMin = h / 3
+  const mtnHeight = Math.random() * (mtnHeightMax - mtnHeightMin) + mtnHeightMin
+  const baseRGB = [
+    Math.floor(Math.random() * 250),
+    Math.floor(Math.random() * 250),
+    Math.floor(Math.random() * 250),
+  ]
+
+  const skyColor1 = [
+    Math.floor(baseRGB[0] - 10),
+    Math.floor(baseRGB[1] - 10),
+    Math.floor(baseRGB[2] + 50),
+  ]
+  const skyColor2 = [skyColor1[0] + 200, skyColor1[1] + 200, skyColor1[2] + 60]
+  setBackground(ctx, `rgba(${skyColor1})`, `rgba(${skyColor2})`, w, h)
+
+  for (let i = 1; i < mtnIterations; i++) {
+    const coords = perlin(
+      mtnAmplitude * mtnIterations * 0.1,
+      mtnWavelength * (mtnIterations - i),
+      w,
+      10,
+      mtnDivisor,
+    )
+
+    const mtnRh = Math.random() * (70 - 35) + 35
+    ctx.fillStyle = `rgba(${baseRGB[0] - 35 * i}, ${baseRGB[1] - 35 * i}, ${baseRGB[2] - 35 * i}, 1)`
+    drawMountains(ctx, coords, mtnHeight + i * mtnRh, w, h)
+  }
+</script>
