@@ -1,0 +1,60 @@
+contacts:
+  - name: GitHub
+    icon: lucide:github
+    url: https://github.com/membranepotential
+  - name: LinkedIn
+    icon: lucide:linkedin
+    url: https://www.linkedin.com/in/felixpeppert
+  - name: Telegram
+    icon: line-md:telegram
+    url: https://t.me/gorah647
+
+services:
+  - Automation
+  - Machine Learning
+  - Web Apps
+  - Computer Vision
+
+scenarios:
+  - title: Daily tasks take up 30% of the teams work capacity
+    description: Due to capacity limitations, data potential is unused.
+    image:
+  - title: A new building project is planned
+    description:
+    image:
+  - title: An entire department is busy processing cases
+    description:
+    image:
+
+caseStudies:
+  - solution:
+      Building a decision making engine driven entirely by real-world legal
+      precedent
+    outcome: Reducing team workload by 60% and freeing up time for new services
+    image:
+  - solution:
+      Building a decision making engine driven entirely by real-world legal
+      precedent
+    outcome: Reducing team workload by 60% and freeing up time for new services
+    image:
+  - solution:
+      Building a decision making engine driven entirely by real-world legal
+      precedent
+    outcome: Reducing team workload by 60% and freeing up time for new services
+    image:
+
+technologies:
+  - Python
+  - JavaScript
+  - TypeScript
+  - NumPy
+  - PyTorch
+  - Polars
+  - Matplotlib
+  - Svelte
+  - Astro
+  - Vue
+  - React
+  - Docker
+  - AWS
+  - GCP

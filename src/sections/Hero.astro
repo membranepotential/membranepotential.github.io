@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components'
+
+import frontpage from '../frontpage.yaml'
+---
+
+<div>
+  {
+    frontpage.contacts.map((contact) => (
+      <a href={contact.url}>
+        <Icon name={contact.icon} />
+        <span>{contact.name}</span>
+      </a>
+    ))
+  }
+</div>
+<div>Data and Web Engineer</div>
+<div>
+  <h1>Felix Peppert</h1>
+</div>
+<div>Berlin</div>
+<div>
+  <a>Here is how I can help</a>
+  <a>Get in touch</a>
+</div>
