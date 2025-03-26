@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Obfuscated from '../components/Obfuscated.astro'
+import Footer from '../sections/Footer.astro'
+
+const address = 'Felix Peppert<br />Grolmanstr. 20<br />10623 Berlin'
+const email = 'felix.peppert@pm.me'
+---
+
+<Layout>
+  <h1 class="mb-4 text-2xl font-bold">Impressum</h1>
+
+  <div class="mb-4">
+    <Obfuscated value={address}>
+      <h2 class="text-md font-bold">Anbieter</h2>
+      <p data-attr="inner"><br /><br /></p>
+    </Obfuscated>
+  </div>
+
+  <div class="mb-4">
+    <Obfuscated value={email}>
+      <h2 class="text-md font-bold">Kontakt</h2>
+      <a id="email" href="#">E-Mail</a>
+    </Obfuscated>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  const element = document.getElementById('email')
+
+  // @ts-ignore
+  element?.parentElement?.addEventListener(
+    'decode',
+    (event: CustomEvent<string>) => {
+      element?.setAttribute('href', 'mailto:' + event.detail)
+      element?.setHTMLUnsafe(event.detail)
+    },
+  )
+</script>

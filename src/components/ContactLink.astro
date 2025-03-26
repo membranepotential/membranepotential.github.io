@@ -1,0 +1,37 @@
+---
+import { Icon } from 'astro-icon/components'
+import Obfuscated from './Obfuscated.astro'
+
+interface Props {
+  title: string
+  icon: string
+  url: string
+  class?: string
+  obfuscated?: boolean
+}
+
+const {
+  title,
+  icon,
+  url,
+  class: classList = '',
+  obfuscated = false,
+} = Astro.props
+
+const Wrap = obfuscated ? Obfuscated : 'div'
+---
+
+<Wrap value={url}>
+  <a
+    href={obfuscated ? '#' : url}
+    class={classList}
+    title={title}
+    aria-label={title}
+    target="_blank"
+    rel="noopener noreferrer"
+    data-attr="href"
+    }
+  >
+    <Icon name={icon} class="aspect-square h-full w-full" />
+  </a>
+</Wrap>

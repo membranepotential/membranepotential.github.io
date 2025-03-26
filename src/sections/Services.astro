@@ -1,0 +1,18 @@
+---
+import ServiceSection from '../components/ServiceSection.astro'
+import { colorMap } from '../components/ServiceSection.astro'
+import frontpage from '../frontpage.yaml'
+
+const colors = Object.keys(colorMap) as Array<keyof typeof colorMap>
+---
+
+{
+  frontpage.services.map((service, i) => (
+    <ServiceSection
+      {service}
+      email="mailto:felix@peppert.de"
+      accentColor={colors[i % colors.length]}
+      mirrored={i % 2 == 1}
+    />
+  ))
+}

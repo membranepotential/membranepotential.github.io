@@ -1,0 +1,29 @@
+---
+import Landscapes from '../components/Landscapes.astro'
+import frontpage from '../frontpage.yaml'
+---
+
+<div class="relative text-center">
+  <!-- Background landscape -->
+  <div class="h-80">
+    <Landscapes />
+  </div>
+
+  <!-- Services titles overlaid on the landscape -->
+  <div class="absolute inset-0 flex items-center justify-center gap-16">
+    {
+      frontpage.services.map((service) => (
+        <div class="text-xl font-bold text-blue-800">
+          <h2>{service}</h2>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Footer text -->
+  <div
+    class="absolute bottom-0 left-0 right-0 p-4 text-center text-xs text-gray-200"
+  >
+    Procedurally generated landscape using perlin noise.
+  </div>
+</div>

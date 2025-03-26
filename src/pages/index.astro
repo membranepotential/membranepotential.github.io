@@ -1,27 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import About from '../sections/About.astro'
-import Blog from '../sections/Blog.astro'
-import CaseStudies from '../sections/CaseStudies.astro'
-import Contact from '../sections/Contact.astro'
 import Footer from '../sections/Footer.astro'
 import Hero from '../sections/Hero.astro'
-import Projects from '../sections/Projects.astro'
-import Scenarios from '../sections/Scenarios.astro'
 import Services from '../sections/Services.astro'
+import SnapScroll from '../components/SnapScroll.astro'
 
 // TODO: Add floating nav bar that appears after hero
 // TODO: Add floating goto top button
 ---
 
 <Layout>
-  <Hero />
-  <Services />
-  <Scenarios />
-  <CaseStudies />
-  <About />
-  <Projects />
-  <Blog />
-  <Contact />
-  <Footer />
+  <SnapScroll>
+    <Hero />
+    <Services />
+    <About />
+    <Footer />
+  </SnapScroll>
 </Layout>

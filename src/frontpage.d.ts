@@ -1,27 +1,16 @@
 declare module '*/frontpage.yaml' {
+  import type { Service } from './types'
+
   interface Contact {
-    name: string
+    title: string
     icon: string
     url: string
-  }
-
-  interface Scenario {
-    title: string
-    description: string
-    image: string
-  }
-
-  interface CaseStudy {
-    solution: string
-    outcome: string
-    image: string
+    obfuscated?: boolean
   }
 
   interface Frontpage {
     contacts: Contact[]
-    services: string[]
-    scenarios: Scenario[]
-    caseStudies: CaseStudy[]
+    services: Service[]
     technologies: string[]
   }
 

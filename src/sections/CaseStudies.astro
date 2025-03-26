@@ -1,0 +1,35 @@
+---
+import frontpage from '../frontpage.yaml'
+
+const caseStudies = frontpage.caseStudies
+---
+
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="mb-6 text-3xl font-bold">Case Studies</h2>
+    <p class="mb-8 text-lg text-gray-600">
+      Here are some examples of past projects. If you would like to find out
+      more about one of the projects, get in touch.
+    </p>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        caseStudies.map((caseStudy) => (
+          <div class="rounded-lg bg-white p-6 shadow-lg">
+            {caseStudy.image ? (
+              <img
+                src={caseStudy.image}
+                alt={caseStudy.solution}
+                class="mb-4 h-48 w-full rounded-md object-cover"
+              />
+            ) : (
+              <div class="mb-4 h-48 w-full rounded-md bg-gray-300" />
+            )}
+            <h3 class="mb-2 text-xl font-semibold">{caseStudy.solution}</h3>
+            <p class="text-gray-700">{caseStudy.outcome}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,25 +1,45 @@
 ---
-import { Icon } from 'astro-icon/components'
-
+import ContactLink from '../components/ContactLink.astro'
 import frontpage from '../frontpage.yaml'
 ---
 
-<div>
-  {
-    frontpage.contacts.map((contact) => (
-      <a href={contact.url}>
-        <Icon name={contact.icon} />
-        <span>{contact.name}</span>
-      </a>
-    ))
-  }
-</div>
-<div>Data and Web Engineer</div>
-<div>
-  <h1>Felix Peppert</h1>
-</div>
-<div>Berlin</div>
-<div>
-  <a>Here is how I can help</a>
-  <a>Get in touch</a>
-</div>
+<section
+  class="flex h-screen snap-start flex-col items-center space-y-4 pt-[20vh]"
+>
+  <!-- Contact Icons -->
+  <div class="mb-12 flex space-x-12">
+    {
+      frontpage.contacts.map((contact) => (
+        <ContactLink
+          class="hover:text-primary inline-flex h-12 w-12 items-center text-gray-900 transition-colors duration-300"
+          {...contact}
+        />
+      ))
+    }
+  </div>
+
+  <!-- Title -->
+  <div class="py-2 text-center">
+    <div class="text-primary mb-4 text-3xl font-semibold">
+      Data and Web Engineer
+    </div>
+    <h1 class="text-primary mb-4 py-2 text-7xl font-bold">Felix Peppert</h1>
+    <div class="text-secondary text-3xl">Berlin</div>
+  </div>
+
+  <!-- Call to Action Buttons -->
+  <!-- <div class="mt-6 flex space-x-4"> -->
+  <!--   <a -->
+  <!--     href="#" -->
+  <!--     class="rounded-full border border-gray-300 px-6 py-2 text-gray-700 transition hover:border-gray-500 hover:text-gray-900" -->
+  <!--   > -->
+  <!--     Here is how I can help -->
+  <!--   </a> -->
+  <!--   <a -->
+  <!--     href="#" -->
+  <!--     class="rounded-full border border-gray-300 px-6 py-2 text-gray-700 transition hover:border-gray-500 hover:text-gray-900" -->
+  <!--   > -->
+  <!--     Get in touch -->
+  <!--   </a> -->
+  <!-- </div> -->
+</section>

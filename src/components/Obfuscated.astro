@@ -1,0 +1,78 @@
+---
+interface Props {
+  value: string
+}
+
+const { value } = Astro.props
+
+const key = Math.floor(Math.random() * (16 - 1)) + 1
+
+// Obfuscate function - encode the URL using XOR
+function obfuscate(value: string, key: number) {
+  return btoa(value)
+    .split('')
+    .map((e, i) =>
+      (e.charCodeAt(0) ^ i % 256 ^ key).toString(16).padStart(2, '0'),
+    )
+    .join('')
+}
+
+const obfuscated = obfuscate(value, key)
+---
+
+<script>
+  // Convert hex string to bytes array
+  function hexToBytes(hex: string) {
+    let bytes = []
+    for (let i = 0; i < hex.length; i += 2) {
+      bytes.push(parseInt(hex.substring(i, i + 2), 16))
+    }
+    return bytes
+  }
+
+  // Deobfuscate function - decode the URL
+  function deobfuscate(obfuscated: string, xor: number): string {
+    return atob(
+      hexToBytes(obfuscated)
+        .map((e, i) => String.fromCharCode(e ^ i % 256 ^ xor))
+        .join(''),
+    )
+  }
+
+  class ObfuscatedData extends HTMLElement {
+    private updateChild(child: Element, decoded: string) {
+      const attrs = child.getAttribute('data-attr')?.split(' ')
+      if (attrs) {
+        for (const attr of attrs) {
+          if (attr === 'inner') {
+            child.setHTMLUnsafe(decoded)
+          } else {
+            child.setAttribute(attr, decoded)
+          }
+        }
+        // console.log('Deobfuscated:', child)
+      }
+    }
+
+    connectedCallback() {
+      const value = this.getAttribute('value')
+      const key = this.getAttribute('key')
+
+      if (value && key) {
+        setTimeout(() => {
+          const decoded = deobfuscate(value, parseInt(key))
+          for (const child of this.children) {
+            this.updateChild(child, decoded)
+          }
+          this.dispatchEvent(new CustomEvent('decode', { detail: decoded }))
+        }, 500)
+      }
+    }
+  }
+
+  customElements.define('obfuscated-data', ObfuscatedData)
+</script>
+
+<obfuscated-data value={obfuscated} key={key}>
+  <slot />
+</obfuscated-data>

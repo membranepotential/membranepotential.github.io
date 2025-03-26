@@ -2,15 +2,16 @@
 import { defineConfig } from 'astro/config'
 
 import sectionize from '@hbsnow/rehype-sectionize'
-import tailwind from '@astrojs/tailwind'
 import yaml from '@rollup/plugin-yaml'
 
-import icon from 'astro-icon';
+import icon from 'astro-icon'
+
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.peppert.de',
-  integrations: [tailwind(), icon()],
+  integrations: [icon()],
   markdown: {
     rehypePlugins: [
       // @ts-ignore
@@ -18,6 +19,6 @@ export default defineConfig({
     ],
   },
   vite: {
-    plugins: [yaml()],
+    plugins: [yaml(), tailwindcss()],
   },
 })

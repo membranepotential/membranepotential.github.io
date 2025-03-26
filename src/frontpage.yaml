@@ -1,47 +1,138 @@
 contacts:
-  - name: GitHub
+  - title: E-Mail
+    icon: lucide:mail
+    url: mailto:felix@peppert.de
+    obfuscated: true
+  - title: GitHub
     icon: lucide:github
     url: https://github.com/membranepotential
-  - name: LinkedIn
+  - title: LinkedIn
     icon: lucide:linkedin
     url: https://www.linkedin.com/in/felixpeppert
-  - name: Telegram
-    icon: line-md:telegram
-    url: https://t.me/gorah647
+  - title: WhatsApp
+    icon: ic:baseline-whatsapp
+    url: https://wa.me/491775664943
+    obfuscated: true
 
 services:
-  - Automation
-  - Machine Learning
-  - Web Apps
-  - Computer Vision
-
-scenarios:
-  - title: Daily tasks take up 30% of the teams work capacity
-    description: Due to capacity limitations, data potential is unused.
+  - title: Automation
+    subheader: Turn spreadsheets into automated workflows
     image:
-  - title: A new building project is planned
+      src: services/automation.png
+      alt:
+        Automated pipeline processing data from a database and cloud,
+        visualizations on a data dashboard
+    problem:
+      Spreadsheets are powerful tools, but they require manual data entry and
+      are error-prone, draining your teams time and resources.
     description:
-    image:
-  - title: An entire department is busy processing cases
-    description:
-    image:
+      By modeling and automating the underlying processes, we eliminate
+      repetitive tasks and create reliable systems that integrate into existing
+      infrastructure.
+    benefits:
+      - Save time spent for manual data entry and spreadsheet juggling
+      - Eliminate errors
+      - Get insights faster with real-time data processing
+      - Free your team to focus on high-value activities
+    caseStudy:
+      A legal-tech start-up manually reviewed rigid regulatory criteria for
+      every incoming case. By identifying the most significant factors and
+      modeling the regulatory constraints we could automate the case review
+      process. This enabled early rejection of 50% of cases and allowed the
+      legal specialists to focus on the complicated and high-value cases.
+    cta: Discuss Your Automation Possibilities
 
-caseStudies:
-  - solution:
-      Building a decision making engine driven entirely by real-world legal
-      precedent
-    outcome: Reducing team workload by 60% and freeing up time for new services
+  - title: Data Science
+    subheader: Unlock hidden insights in your existing data
     image:
-  - solution:
-      Building a decision making engine driven entirely by real-world legal
-      precedent
-    outcome: Reducing team workload by 60% and freeing up time for new services
+      src: services/datascience.png
+      alt: Presenting data analyses and insights
+    problem:
+      Most organizations collect vast amounts of data but struggle to extract
+      meaningful value from it. Hidden patterns and insights remain untapped.
+    description:
+      Perform qualitative and statistical analysis to clarify the overlap of
+      business interests and patterns in the data. Choose the best fit from a
+      large repertoire of score, ranking, clustering or agent models. Train,
+      evaluate and integrate the model into existing infrastructure.
+    benefits:
+      - Exploit patterns and trends in your data
+      - Make data-driven decisions with greater confidence
+      - Predict future outcomes based on historical data
+      - Optimize processes with intelligent recommendations
+    cta: Explore Your Data Potential
+
+  - title: Web App Development
+    subheader: Create powerful interactive tools
     image:
-  - solution:
-      Building a decision making engine driven entirely by real-world legal
-      precedent
-    outcome: Reducing team workload by 60% and freeing up time for new services
+      src: services/webapp.png
+      alt: A feature-rich web app on a smartphone
+    problem:
+      Traditional software often lacks flexibility and requires significant IT
+      support. Modern businesses need accessible tools that evolve with changing
+      requirements.
+    description:
+      Web Apps are the modern way to offer interactivity with data and processes
+      for both internal or customer-facing use cases. The user interface is
+      implemented based on data- and process-models.
+    benefits:
+      - Access your tools from anywhere, on any device
+      - Integrate with existing systems and data sources
+      - Use cloud infrastructure to scale effortlessly
+    caseStudy:
+      A biotech start-up needed a web portal to exchange potentially huge files
+      with their customers. We implemented a web app with account management,
+      robust file upload and e-mail notifications, and deployed it together with
+      the required infrastructure on Amazon Web Services. This enabled
+      centralised and robust workload exchange.
+    cta: Build Your Web App
+
+  - title: Computer Vision
+    subheader: Transform visual data into actionable intelligence
     image:
+      src: services/vision.png
+      alt:
+        A computer vision system consisting of a camera hooked up to a
+        micro-computer and a screen.
+    problem:
+      Visual information is abundant but difficult to process at scale. Manual
+      review of images and video is time-consuming and inconsistent.
+    description:
+      Visual data creates novel ways to interact with the world. A
+      transformation pipeline solves tasks based on data from sensors such as
+      cameras, LIDARs or microphones.
+    benefits:
+      - Automate inspection and quality control processes
+      - Extract measurable data from images and video streams
+      - Identify objects, people, or conditions in real-time
+      - Create new interaction paradigms through visual understanding
+    caseStudy:
+      A dating coach website wanted to give feedback on the users profile
+      pictures. We created an image-tagging software that extracted relevant
+      features leading to fine-grained improvement suggestions.
+    cta: Solve Your Computer Vision Problem
+
+  - title: Language Models
+    subheader: Harness AI to process text and language at unprecedented scale
+    image:
+      src: services/language.png
+      alt:
+        Large scale document processing system showing a vast library and a
+        computer access terminal.
+    problem:
+      Organizations struggle to process large volumes of text data. Manual
+      document review and language processing are slow and expensive.
+    description:
+      The recent break-through in artificial intelligence elevated the
+      possibilities of processing natural language to previously inconceivable
+      levels. Use large language models to process large document libraries,
+      power chat bots or automate complex tasks.
+    benefits:
+      - Analyze thousands of documents in minutes rather than weeks
+      - Extract key information from unstructured text
+      - Generate high-quality content and reports automatically
+      - Create natural conversational interfaces for your systems
+    cta: Realize Your Text Processing Ideas
 
 technologies:
   - Python
